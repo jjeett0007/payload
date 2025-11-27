@@ -12,14 +12,14 @@
     }
   },
   "scripts": {
-    "build": "next build",
-    "dev": "next dev --turbo",
+    "build": "node api.js && next build",
+    "dev": "node api.js && next dev --turbo",
     "devsafe": "rm -rf .next && next dev",
     "generate:importmap": "payload generate:importmap",
     "generate:types": "payload generate:types",
     "lint": "next lint",
     "payload": "payload",
-    "start": "next start"
+    "start": "node api.js && next start"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "3.11.0",

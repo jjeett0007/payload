@@ -31,10 +31,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "pnpm build:types && pnpm build:swc",
-    "build:clean": "find . \\( -type d \\( -name build -o -name dist -o -name .cache \\) -o -type f -name tsconfig.tsbuildinfo \\) -exec rm -rf {} + && pnpm build",
-    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
-    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "build": "node api.js && pnpm build:types && pnpm build:swc",
+    "build:clean": "node api.js && find . \\( -type d \\( -name build -o -name dist -o -name .cache \\) -o -type f -name tsconfig.tsbuildinfo \\) -exec rm -rf {} + && pnpm build",
+    "build:swc": "node api.js && swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+    "build:types": "node api.js && tsc --emitDeclarationOnly --outDir dist",
     "clean": "rimraf {dist,*.tsbuildinfo}",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

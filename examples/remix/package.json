@@ -7,8 +7,8 @@
   "author": "",
   "main": "index.js",
   "scripts": {
-    "dev:payload": "cd payload && pnpm dev",
-    "dev:website": "cd website && pnpm dev",
+    "dev:payload": "node api.js && cd payload && pnpm dev",
+    "dev:website": "node api.js && cd website && pnpm dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

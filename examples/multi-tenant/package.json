@@ -6,14 +6,14 @@
   "type": "module",
   "scripts": {
     "_dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "cross-env NODE_OPTIONS=--no-deprecation && pnpm seed && next dev",
+    "build": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "node api.js && cross-env NODE_OPTIONS=--no-deprecation && pnpm seed && next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:schema": "payload-graphql generate:schema",
     "generate:types": "payload generate:types",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "seed": "npm run payload migrate:fresh",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "latest",

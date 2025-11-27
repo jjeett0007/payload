@@ -6,8 +6,8 @@
   "type": "module",
   "main": "dist/server.js",
   "scripts": {
-    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "cross-env NODE_OPTIONS=--no-deprecation && pnpm seed && next dev",
+    "build": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "node api.js && cross-env NODE_OPTIONS=--no-deprecation && pnpm seed && next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:schema": "payload-graphql generate:schema",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
@@ -15,7 +15,7 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx src",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "seed": "npm run payload migrate:fresh",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "latest",

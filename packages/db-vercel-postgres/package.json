@@ -63,10 +63,10 @@
     "mock.js"
   ],
   "scripts": {
-    "build": "rimraf .dist && rimraf tsconfig.tsbuildinfo  && pnpm build:types && pnpm build:swc && pnpm build:esbuild && pnpm renamePredefinedMigrations",
-    "build:esbuild": "echo skipping esbuild",
-    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
-    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "build": "node api.js && rimraf .dist && rimraf tsconfig.tsbuildinfo  && pnpm build:types && pnpm build:swc && pnpm build:esbuild && pnpm renamePredefinedMigrations",
+    "build:esbuild": "node api.js && echo skipping esbuild",
+    "build:swc": "node api.js && swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+    "build:types": "node api.js && tsc --emitDeclarationOnly --outDir dist",
     "clean": "rimraf -g {dist,*.tsbuildinfo}",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

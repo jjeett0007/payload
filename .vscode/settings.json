@@ -1,46 +1,23 @@
 {
-  "npm.packageManager": "pnpm",
+  "search.exclude": {
+    "**/.sst": true
+  },
+  "task.allowAutomaticTasks": true,
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "editor.formatOnSaveMode": "file",
-  "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true,
-  "eslint.rules.customizations": [
-    // Silence some warnings that will get auto-fixed
-    { "rule": "perfectionist/*", "severity": "off", "fixable": true },
-    { "rule": "curly", "severity": "off", "fixable": true },
-    { "rule": "object-shorthand", "severity": "off", "fixable": true }
-  ],
+  "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.tsdk": "node_modules/typescript/lib",
-  // Load .git-blame-ignore-revs file
-  "gitlens.advanced.blame.customArguments": ["--ignore-revs-file", ".git-blame-ignore-revs"],
-  "jestrunner.jestCommand": "pnpm exec cross-env NODE_OPTIONS=\"--no-deprecation\" node 'node_modules/jest/bin/jest.js'",
-  "jestrunner.changeDirectoryToWorkspaceRoot": false,
-  "jestrunner.debugOptions": {
-    "runtimeArgs": ["--no-deprecation"]
-  },
-  // Essentially disables bun test buttons
-  "bun.test.filePattern": "bun.test.ts",
-  "playwright.env": {
-    "NODE_OPTIONS": "--no-deprecation --no-experimental-strip-types"
-  },
-  "jest.virtualFolders": [
-    {
-      "name": "root",
-      "rootPath": ".",
-      "runMode": {
-        "type": "on-demand"
-      }
-    },
-    {
-      "name": "test",
-      "rootPath": "test",
-      "runMode": {
-        "type": "on-demand"
-      }
-    }
-  ]
+  "debug.openDebug": "neverOpen",
+  "problems.autoReveal": true,
+  "terminal.integrated.hideOnStartup": "always",
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "terminal.integrated.inheritEnv": false,
+  "jestrunner.configPath": "jest.unit.config.cjs",
+  "compile-hero.disable-compile-files-on-did-save-code": true,
+  "tasks": {
+    "label": "lint on open",
+    "type": "shell",
+    "command": "npm run lint",
+    "runOn": "folderOpen"
+  }
 }

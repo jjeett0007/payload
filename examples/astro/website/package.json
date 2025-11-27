@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "astro build",
-    "dev": "astro dev",
+    "build": "node api.js && astro build",
+    "dev": "node api.js && astro dev",
     "preview": "astro preview"
   },
   "dependencies": {

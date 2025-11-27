@@ -69,5 +69,4 @@ export default process.env.NEXT_PUBLIC_SENTRY_DSN
   ? withSentryConfig(config, {
       telemetry: false,
       tunnelRoute: '/monitoring-tunnel',
-    })
-  : config
+    });

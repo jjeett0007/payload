@@ -48,8 +48,8 @@
     "bin"
   ],
   "scripts": {
-    "build": "pnpm pack-template-files && pnpm typecheck && pnpm build:swc",
-    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+    "build": "node api.js && pnpm pack-template-files && pnpm typecheck && pnpm build:swc",
+    "build:swc": "node api.js && swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
     "clean": "rimraf -g {dist,*.tsbuildinfo}",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
