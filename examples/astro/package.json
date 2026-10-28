@@ -1,14 +1,14 @@
 {
-  "name": "remix-payload-monorepo",
-  "version": "1.0.0",
+  "author": "",
   "description": "",
   "keywords": [],
   "license": "ISC",
-  "author": "",
   "main": "index.js",
+  "name": "remix-payload-monorepo",
   "scripts": {
-    "dev:payload": "node api.js && cd payload && pnpm dev",
-    "dev:website": "node api.js && cd website && pnpm dev",
+    "dev:payload": "cd payload && pnpm dev",
+    "dev:website": "cd website && pnpm dev",
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
+  "version": "1.0.0"
 }

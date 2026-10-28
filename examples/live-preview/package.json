@@ -1,22 +1,4 @@
 {
-  "name": "payload-example-live-preview",
-  "version": "1.0.0",
-  "description": "Payload Live Preview example.",
-  "license": "MIT",
-  "type": "module",
-  "main": "dist/server.js",
-  "scripts": {
-    "build": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "node api.js && cross-env NODE_OPTIONS=--no-deprecation && pnpm seed && next dev",
-    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
-    "generate:schema": "payload-graphql generate:schema",
-    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
-    "lint:fix": "eslint --fix --ext .ts,.tsx src",
-    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "seed": "npm run payload migrate:fresh",
-    "start": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next start"
-  },
   "dependencies": {
     "@payloadcms/db-mongodb": "latest",
     "@payloadcms/live-preview-react": "latest",
@@ -33,6 +15,7 @@
     "react-dom": "19.0.0",
     "react-hook-form": "^7.51.3"
   },
+  "description": "Payload Live Preview example.",
   "devDependencies": {
     "@payloadcms/graphql": "latest",
     "@swc/core": "^1.4.14",
@@ -50,5 +33,22 @@
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0"
-  }
+  },
+  "license": "MIT",
+  "main": "dist/server.js",
+  "name": "payload-example-live-preview",
+  "scripts": {
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation && pnpm seed && next dev",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:schema": "payload-graphql generate:schema",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+    "lint:fix": "eslint --fix --ext .ts,.tsx src",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "seed": "npm run payload migrate:fresh",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+  },
+  "type": "module",
+  "version": "1.0.0"
 }

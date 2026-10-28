@@ -1,21 +1,4 @@
 {
-  "name": "payload-localization-example",
-  "version": "1.0.0",
-  "description": "An example of how to use Payload's localization features",
-  "type": "module",
-  "scripts": {
-    "build": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "dev:prod": "node api.js && cross-env NODE_OPTIONS=--no-deprecation rm -rf .next && pnpm build && pnpm start",
-    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
-    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "ii": "cross-env NODE_OPTIONS=--no-deprecation pnpm --ignore-workspace install",
-    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
-    "lint:fix": "cross-env NODE_OPTIONS=--no-deprecation next lint --fix",
-    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "reinstall": "cross-env NODE_OPTIONS=--no-deprecation rm -rf node_modules && rm pnpm-lock.yaml && pnpm --ignore-workspace install",
-    "start": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next start"
-  },
   "dependencies": {
     "@payloadcms/db-mongodb": "latest",
     "@payloadcms/live-preview-react": "latest",
@@ -50,6 +33,7 @@
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   },
+  "description": "An example of how to use Payload's localization features",
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
     "@tailwindcss/typography": "^0.5.13",
@@ -69,5 +53,21 @@
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0"
-  }
+  },
+  "name": "payload-localization-example",
+  "scripts": {
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "dev:prod": "cross-env NODE_OPTIONS=--no-deprecation rm -rf .next && pnpm build && pnpm start",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "ii": "cross-env NODE_OPTIONS=--no-deprecation pnpm --ignore-workspace install",
+    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+    "lint:fix": "cross-env NODE_OPTIONS=--no-deprecation next lint --fix",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "reinstall": "cross-env NODE_OPTIONS=--no-deprecation rm -rf node_modules && rm pnpm-lock.yaml && pnpm --ignore-workspace install",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+  },
+  "type": "module",
+  "version": "1.0.0"
 }

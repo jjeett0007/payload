@@ -1,19 +1,4 @@
 {
-  "name": "payload-form-builder-example",
-  "version": "1.0.0",
-  "description": "Payload form builder example.",
-  "license": "MIT",
-  "type": "module",
-  "scripts": {
-    "build": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "node api.js && cross-env NODE_OPTIONS=--no-deprecation && pnpm seed && next dev",
-    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
-    "generate:schema": "payload-graphql generate:schema",
-    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "seed": "npm run payload migrate:fresh",
-    "start": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next start"
-  },
   "dependencies": {
     "@apollo/client": "^3.7.0",
     "@faceless-ui/css-grid": "^1.2.0",
@@ -32,6 +17,7 @@
     "react-hook-form": "^7.41.0",
     "react-select": "^5.9.0"
   },
+  "description": "Payload form builder example.",
   "devDependencies": {
     "@payloadcms/graphql": "latest",
     "@types/node": "^20.11.25",
@@ -45,5 +31,19 @@
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0"
-  }
+  },
+  "license": "MIT",
+  "name": "payload-form-builder-example",
+  "scripts": {
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation && pnpm seed && next dev",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:schema": "payload-graphql generate:schema",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "seed": "npm run payload migrate:fresh",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+  },
+  "type": "module",
+  "version": "1.0.0"
 }

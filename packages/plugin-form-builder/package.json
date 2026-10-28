@@ -1,7 +1,40 @@
 {
-  "name": "@payloadcms/plugin-form-builder",
-  "version": "3.65.0",
+  "author": "Payload <dev@payloadcms.com> (https://payloadcms.com)",
+  "dependencies": {
+    "@payloadcms/ui": "workspace:*",
+    "escape-html": "^1.0.3"
+  },
   "description": "Form builder plugin for Payload CMS",
+  "devDependencies": {
+    "@payloadcms/eslint-config": "workspace:*",
+    "@types/escape-html": "^1.0.4",
+    "@types/react": "19.1.12",
+    "@types/react-dom": "19.1.9",
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "payload": "workspace:*"
+  },
+  "exports": {
+    ".": {
+      "default": "./src/index.ts",
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./client": {
+      "default": "./src/exports/client.ts",
+      "import": "./src/exports/client.ts",
+      "types": "./src/exports/client.ts"
+    },
+    "./types": {
+      "default": "./src/exports/types.ts",
+      "import": "./src/exports/types.ts",
+      "types": "./src/exports/types.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage:": "https://payloadcms.com",
   "keywords": [
     "payload",
     "cms",
@@ -13,67 +46,16 @@
     "form builder",
     "payments"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/payloadcms/payload.git",
-    "directory": "packages/plugin-form-builder"
-  },
   "license": "MIT",
-  "author": "Payload <dev@payloadcms.com> (https://payloadcms.com)",
+  "main": "./src/index.ts",
   "maintainers": [
     {
-      "name": "Payload",
       "email": "info@payloadcms.com",
+      "name": "Payload",
       "url": "https://payloadcms.com"
     }
   ],
-  "sideEffects": false,
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
-    },
-    "./types": {
-      "import": "./src/exports/types.ts",
-      "types": "./src/exports/types.ts",
-      "default": "./src/exports/types.ts"
-    },
-    "./client": {
-      "import": "./src/exports/client.ts",
-      "types": "./src/exports/client.ts",
-      "default": "./src/exports/client.ts"
-    }
-  },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "node api.js && pnpm build:types && pnpm build:swc",
-    "build:swc": "node api.js && swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
-    "build:types": "node api.js && tsc --emitDeclarationOnly --outDir dist",
-    "clean": "rimraf -g {dist,*.tsbuildinfo}",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prepublishOnly": "pnpm clean && pnpm turbo build",
-    "test": "echo \"No tests available.\""
-  },
-  "dependencies": {
-    "@payloadcms/ui": "workspace:*",
-    "escape-html": "^1.0.3"
-  },
-  "devDependencies": {
-    "@payloadcms/eslint-config": "workspace:*",
-    "@types/escape-html": "^1.0.4",
-    "@types/react": "19.1.12",
-    "@types/react-dom": "19.1.9",
-    "copyfiles": "^2.4.1",
-    "cross-env": "^7.0.3",
-    "payload": "workspace:*"
-  },
+  "name": "@payloadcms/plugin-form-builder",
   "peerDependencies": {
     "payload": "workspace:*",
     "react": "^19.0.0 || ^19.0.0-rc-65a56d0e-20241020",
@@ -82,24 +64,42 @@
   "publishConfig": {
     "exports": {
       ".": {
+        "default": "./dist/index.js",
         "import": "./dist/index.js",
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "./types": {
-        "import": "./dist/exports/types.js",
-        "types": "./dist/exports/types.d.ts",
-        "default": "./dist/exports/types.js"
+        "types": "./dist/index.d.ts"
       },
       "./client": {
+        "default": "./dist/exports/client.js",
         "import": "./dist/exports/client.js",
-        "types": "./dist/exports/client.d.ts",
-        "default": "./dist/exports/client.js"
+        "types": "./dist/exports/client.d.ts"
+      },
+      "./types": {
+        "default": "./dist/exports/types.js",
+        "import": "./dist/exports/types.js",
+        "types": "./dist/exports/types.d.ts"
       }
     },
     "main": "./dist/index.js",
     "registry": "https://registry.npmjs.org/",
     "types": "./dist/index.d.ts"
   },
-  "homepage:": "https://payloadcms.com"
+  "repository": {
+    "directory": "packages/plugin-form-builder",
+    "type": "git",
+    "url": "https://github.com/payloadcms/payload.git"
+  },
+  "scripts": {
+    "build": "pnpm build:types && pnpm build:swc",
+    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "clean": "rimraf -g {dist,*.tsbuildinfo}",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepublishOnly": "pnpm clean && pnpm turbo build",
+    "test": "echo \"No tests available.\""
+  },
+  "sideEffects": false,
+  "type": "module",
+  "types": "./src/index.ts",
+  "version": "3.65.0"
 }

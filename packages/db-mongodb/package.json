@@ -1,62 +1,12 @@
 {
-  "name": "@payloadcms/db-mongodb",
-  "version": "3.65.0",
-  "description": "The officially supported MongoDB database adapter for Payload",
-  "homepage": "https://payloadcms.com",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/payloadcms/payload.git",
-    "directory": "packages/db-mongodb"
-  },
-  "license": "MIT",
   "author": "Payload <dev@payloadcms.com> (https://payloadcms.com)",
-  "maintainers": [
-    {
-      "name": "Payload",
-      "email": "info@payloadcms.com",
-      "url": "https://payloadcms.com"
-    }
-  ],
-  "sideEffects": false,
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
-    },
-    "./migration-utils": {
-      "import": "./src/exports/migration-utils.ts",
-      "types": "./src/exports/migration-utils.ts",
-      "default": "./src/exports/migration-utils.ts"
-    },
-    "./internal": {
-      "import": "./src/exports/internal.ts",
-      "types": "./src/exports/internal.ts",
-      "default": "./src/exports/internal.ts"
-    }
-  },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "files": [
-    "dist",
-    "predefinedMigrations"
-  ],
-  "scripts": {
-    "build": "node api.js && pnpm build:types && pnpm build:swc",
-    "build:swc": "node api.js && swc ./src -d ./dist --config-file .swcrc-build --strip-leading-paths",
-    "build:types": "node api.js && tsc --emitDeclarationOnly --outDir dist",
-    "clean": "rimraf -g {dist,*.tsbuildinfo}",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prepublishOnly": "pnpm clean && pnpm turbo build"
-  },
   "dependencies": {
     "mongoose": "8.15.1",
     "mongoose-paginate-v2": "1.8.5",
     "prompts": "2.4.2",
     "uuid": "10.0.0"
   },
+  "description": "The officially supported MongoDB database adapter for Payload",
   "devDependencies": {
     "@payloadcms/eslint-config": "workspace:*",
     "@types/mongoose-aggregate-paginate-v2": "1.0.12",
@@ -66,28 +16,78 @@
     "mongodb-memory-server": "10.1.4",
     "payload": "workspace:*"
   },
+  "exports": {
+    ".": {
+      "default": "./src/index.ts",
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./internal": {
+      "default": "./src/exports/internal.ts",
+      "import": "./src/exports/internal.ts",
+      "types": "./src/exports/internal.ts"
+    },
+    "./migration-utils": {
+      "default": "./src/exports/migration-utils.ts",
+      "import": "./src/exports/migration-utils.ts",
+      "types": "./src/exports/migration-utils.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "predefinedMigrations"
+  ],
+  "homepage": "https://payloadcms.com",
+  "license": "MIT",
+  "main": "./src/index.ts",
+  "maintainers": [
+    {
+      "email": "info@payloadcms.com",
+      "name": "Payload",
+      "url": "https://payloadcms.com"
+    }
+  ],
+  "name": "@payloadcms/db-mongodb",
   "peerDependencies": {
     "payload": "workspace:*"
   },
   "publishConfig": {
     "exports": {
       ".": {
+        "default": "./dist/index.js",
         "import": "./dist/index.js",
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "./migration-utils": {
-        "import": "./dist/exports/migration-utils.js",
-        "types": "./dist/exports/migration-utils.d.ts",
-        "default": "./dist/exports/migration-utils.js"
+        "types": "./dist/index.d.ts"
       },
       "./internal": {
+        "default": "./dist/exports/internal.js",
         "import": "./dist/exports/internal.js",
-        "types": "./dist/exports/internal.d.ts",
-        "default": "./dist/exports/internal.js"
+        "types": "./dist/exports/internal.d.ts"
+      },
+      "./migration-utils": {
+        "default": "./dist/exports/migration-utils.js",
+        "import": "./dist/exports/migration-utils.js",
+        "types": "./dist/exports/migration-utils.d.ts"
       }
     },
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts"
-  }
+  },
+  "repository": {
+    "directory": "packages/db-mongodb",
+    "type": "git",
+    "url": "https://github.com/payloadcms/payload.git"
+  },
+  "scripts": {
+    "build": "pnpm build:types && pnpm build:swc",
+    "build:swc": "swc ./src -d ./dist --config-file .swcrc-build --strip-leading-paths",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "clean": "rimraf -g {dist,*.tsbuildinfo}",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepublishOnly": "pnpm clean && pnpm turbo build"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "types": "./src/index.ts",
+  "version": "3.65.0"
 }

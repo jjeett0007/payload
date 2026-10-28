@@ -1,16 +1,16 @@
 {
-  "name": "@tools/constants",
-  "version": "0.0.1",
-  "description": "Shared constants for Payload internal tooling",
-  "license": "MIT",
   "author": "Payload <dev@payloadcms.com> (https://payloadcms.com)",
-  "type": "module",
+  "description": "Shared constants for Payload internal tooling",
   "exports": {
     ".": {
       "import": "./src/index.ts"
     }
   },
+  "license": "MIT",
+  "name": "@tools/constants",
   "scripts": {
-    "build": "node api.js && tsc"
-  }
+    "build": "tsc"
+  },
+  "type": "module",
+  "version": "0.0.1"
 }

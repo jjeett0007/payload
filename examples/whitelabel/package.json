@@ -1,19 +1,4 @@
 {
-  "name": "payload-example-whitelabel",
-  "version": "1.0.0",
-  "license": "MIT",
-  "main": "dist/server.js",
-  "scripts": {
-    "build": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
-    "generate:schema": "payload-graphql generate:schema",
-    "generate:types": "payload generate:types",
-    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
-    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next start"
-  },
   "dependencies": {
     "@payloadcms/db-mongodb": "latest",
     "@payloadcms/next": "latest",
@@ -39,5 +24,20 @@
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0"
-  }
+  },
+  "license": "MIT",
+  "main": "dist/server.js",
+  "name": "payload-example-whitelabel",
+  "scripts": {
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:schema": "payload-graphql generate:schema",
+    "generate:types": "payload generate:types",
+    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+  },
+  "version": "1.0.0"
 }

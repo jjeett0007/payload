@@ -1,26 +1,5 @@
 {
-  "name": "payload-test-suite",
-  "version": "0.0.1",
-  "private": true,
   "description": "Payload test suite",
-  "type": "module",
-  "scripts": {
-    "dev": "node api.js && cross-env NODE_OPTIONS=--no-deprecation node ./dev.js",
-    "test": "pnpm -C \"../\" run test",
-    "test:e2e": "pnpm -C \"../\" run test:e2e",
-    "test:int": "pnpm -C \"../\" run test:int",
-    "typecheck": "pnpm turbo build --filter payload-test-suite && tsc --project tsconfig.typecheck.json"
-  },
-  "lint-staged": {
-    "**/package.json": "sort-package-json",
-    "*.{md,mdx,yml,json}": "prettier --write",
-    "*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "eslint --cache --fix"
-    ],
-    "templates/website/**/*": "sh -c \"cd templates/website; pnpm install --ignore-workspace --frozen-lockfile; pnpm run lint --fix\"",
-    "tsconfig.json": "node scripts/reset-tsconfig.js"
-  },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.614.0",
     "@azure/storage-blob": "^12.11.0",
@@ -113,7 +92,28 @@
     "wrangler": "~4.42.0",
     "zod": "^3.25.5"
   },
+  "lint-staged": {
+    "**/package.json": "sort-package-json",
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --cache --fix"
+    ],
+    "*.{md,mdx,yml,json}": "prettier --write",
+    "templates/website/**/*": "sh -c \"cd templates/website; pnpm install --ignore-workspace --frozen-lockfile; pnpm run lint --fix\"",
+    "tsconfig.json": "node scripts/reset-tsconfig.js"
+  },
+  "name": "payload-test-suite",
   "pnpm": {
     "neverBuiltDependencies": []
-  }
+  },
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation node ./dev.js",
+    "test": "pnpm -C \"../\" run test",
+    "test:e2e": "pnpm -C \"../\" run test:e2e",
+    "test:int": "pnpm -C \"../\" run test:int",
+    "typecheck": "pnpm turbo build --filter payload-test-suite && tsc --project tsconfig.typecheck.json"
+  },
+  "type": "module",
+  "version": "0.0.1"
 }

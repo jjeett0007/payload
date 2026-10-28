@@ -1,93 +1,10 @@
 {
-  "name": "payload",
-  "version": "3.65.0",
-  "description": "Node, React, Headless CMS and Application Framework built on Next.js",
-  "keywords": [
-    "admin panel",
-    "api",
-    "cms",
-    "content management",
-    "dashboard",
-    "framework",
-    "graphQL",
-    "headless",
-    "javascript",
-    "next.js",
-    "node",
-    "payload",
-    "react",
-    "self hosted",
-    "typescript"
-  ],
-  "homepage": "https://payloadcms.com",
-  "bugs": {
-    "url": "https://github.com/payloadcms/payload"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/payloadcms/payload.git",
-    "directory": "packages/payload"
-  },
-  "license": "MIT",
   "author": "Payload <dev@payloadcms.com> (https://payloadcms.com)",
-  "maintainers": [
-    {
-      "name": "Payload",
-      "email": "info@payloadcms.com",
-      "url": "https://payloadcms.com"
-    }
-  ],
-  "sideEffects": false,
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
-    },
-    "./internal": {
-      "import": "./src/exports/internal.ts",
-      "types": "./src/exports/internal.ts",
-      "default": "./src/exports/internal.ts"
-    },
-    "./shared": {
-      "import": "./src/exports/shared.ts",
-      "types": "./src/exports/shared.ts",
-      "default": "./src/exports/shared.ts"
-    },
-    "./node": {
-      "import": "./src/exports/node.ts",
-      "types": "./src/exports/node.ts",
-      "default": "./src/exports/node.ts"
-    },
-    "./i18n/*": {
-      "import": "./src/exports/i18n/*.ts",
-      "types": "./src/exports/i18n/*.ts",
-      "default": "./src/exports/i18n/*.ts"
-    }
-  },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
   "bin": {
     "payload": "bin.js"
   },
-  "files": [
-    "dist",
-    "bin.js"
-  ],
-  "scripts": {
-    "build": "node api.js && rimraf .dist && rimraf tsconfig.tsbuildinfo && pnpm copyfiles && pnpm build:types && pnpm build:swc && pnpm bundle:types && echo skipping esbuild",
-    "build:bundle-for-analysis": "node api.js && node ./bundle.js esbuild",
-    "build:swc": "node api.js && swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
-    "build:types": "node api.js && tsc --emitDeclarationOnly --outDir dist",
-    "bundle:types": "rollup -c rollup.dts.config.mjs",
-    "clean": "rimraf -g {dist,*.tsbuildinfo}",
-    "clean:cache": "rimraf node_modules/.cache",
-    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,ttf,woff,woff2,eot,svg,jpg,png,json}\" dist/",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prepublishOnly": "pnpm clean && pnpm turbo build",
-    "pretest": "pnpm build"
+  "bugs": {
+    "url": "https://github.com/payloadcms/payload"
   },
   "dependencies": {
     "@next/env": "^15.1.5",
@@ -122,6 +39,7 @@
     "uuid": "10.0.0",
     "ws": "^8.16.0"
   },
+  "description": "Node, React, Headless CMS and Application Framework built on Next.js",
   "devDependencies": {
     "@hyrious/esbuild-plugin-commonjs": "0.2.6",
     "@monaco-editor/react": "4.7.0",
@@ -142,42 +60,124 @@
     "rollup-plugin-dts": "6.2.3",
     "sharp": "0.32.6"
   },
-  "peerDependencies": {
-    "graphql": "^16.8.1"
-  },
   "engines": {
     "node": "^18.20.2 || >=20.9.0"
+  },
+  "exports": {
+    ".": {
+      "default": "./src/index.ts",
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./i18n/*": {
+      "default": "./src/exports/i18n/*.ts",
+      "import": "./src/exports/i18n/*.ts",
+      "types": "./src/exports/i18n/*.ts"
+    },
+    "./internal": {
+      "default": "./src/exports/internal.ts",
+      "import": "./src/exports/internal.ts",
+      "types": "./src/exports/internal.ts"
+    },
+    "./node": {
+      "default": "./src/exports/node.ts",
+      "import": "./src/exports/node.ts",
+      "types": "./src/exports/node.ts"
+    },
+    "./shared": {
+      "default": "./src/exports/shared.ts",
+      "import": "./src/exports/shared.ts",
+      "types": "./src/exports/shared.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "bin.js"
+  ],
+  "homepage": "https://payloadcms.com",
+  "keywords": [
+    "admin panel",
+    "api",
+    "cms",
+    "content management",
+    "dashboard",
+    "framework",
+    "graphQL",
+    "headless",
+    "javascript",
+    "next.js",
+    "node",
+    "payload",
+    "react",
+    "self hosted",
+    "typescript"
+  ],
+  "license": "MIT",
+  "main": "./src/index.ts",
+  "maintainers": [
+    {
+      "email": "info@payloadcms.com",
+      "name": "Payload",
+      "url": "https://payloadcms.com"
+    }
+  ],
+  "name": "payload",
+  "peerDependencies": {
+    "graphql": "^16.8.1"
   },
   "publishConfig": {
     "exports": {
       ".": {
+        "default": "./dist/index.js",
         "import": "./dist/index.js",
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "./internal": {
-        "import": "./dist/exports/internal.js",
-        "types": "./dist/exports/internal.d.ts",
-        "default": "./dist/exports/internal.js"
-      },
-      "./node": {
-        "import": "./dist/exports/node.js",
-        "types": "./dist/exports/node.d.ts",
-        "default": "./dist/exports/node.js"
-      },
-      "./shared": {
-        "import": "./dist/exports/shared.js",
-        "types": "./dist/exports/shared.d.ts",
-        "default": "./dist/exports/shared.js"
+        "types": "./dist/index.d.ts"
       },
       "./i18n/*": {
+        "default": "./dist/exports/i18n/*.js",
         "import": "./dist/exports/i18n/*.js",
-        "types": "./dist/exports/i18n/*.d.ts",
-        "default": "./dist/exports/i18n/*.js"
+        "types": "./dist/exports/i18n/*.d.ts"
+      },
+      "./internal": {
+        "default": "./dist/exports/internal.js",
+        "import": "./dist/exports/internal.js",
+        "types": "./dist/exports/internal.d.ts"
+      },
+      "./node": {
+        "default": "./dist/exports/node.js",
+        "import": "./dist/exports/node.js",
+        "types": "./dist/exports/node.d.ts"
+      },
+      "./shared": {
+        "default": "./dist/exports/shared.js",
+        "import": "./dist/exports/shared.js",
+        "types": "./dist/exports/shared.d.ts"
       }
     },
     "main": "./dist/index.js",
     "registry": "https://registry.npmjs.org/",
     "types": "./dist/index.d.ts"
-  }
+  },
+  "repository": {
+    "directory": "packages/payload",
+    "type": "git",
+    "url": "https://github.com/payloadcms/payload.git"
+  },
+  "scripts": {
+    "build": "rimraf .dist && rimraf tsconfig.tsbuildinfo && pnpm copyfiles && pnpm build:types && pnpm build:swc && pnpm bundle:types && echo skipping esbuild",
+    "build:bundle-for-analysis": "node ./bundle.js esbuild",
+    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "bundle:types": "rollup -c rollup.dts.config.mjs",
+    "clean": "rimraf -g {dist,*.tsbuildinfo}",
+    "clean:cache": "rimraf node_modules/.cache",
+    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,ttf,woff,woff2,eot,svg,jpg,png,json}\" dist/",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepublishOnly": "pnpm clean && pnpm turbo build",
+    "pretest": "pnpm build"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "types": "./src/index.ts",
+  "version": "3.65.0"
 }

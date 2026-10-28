@@ -1,79 +1,5 @@
 {
-  "name": "@payloadcms/db-postgres",
-  "version": "3.65.0",
-  "description": "The officially supported Postgres database adapter for Payload",
-  "homepage": "https://payloadcms.com",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/payloadcms/payload.git",
-    "directory": "packages/db-postgres"
-  },
-  "license": "MIT",
   "author": "Payload <dev@payloadcms.com> (https://payloadcms.com)",
-  "maintainers": [
-    {
-      "name": "Payload",
-      "email": "info@payloadcms.com",
-      "url": "https://payloadcms.com"
-    }
-  ],
-  "sideEffects": false,
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
-    },
-    "./types": {
-      "import": "./src/exports/types-deprecated.ts",
-      "types": "./src/exports/types-deprecated.ts",
-      "default": "./src/exports/types-deprecated.ts"
-    },
-    "./migration-utils": {
-      "import": "./src/exports/migration-utils.ts",
-      "types": "./src/exports/migration-utils.ts",
-      "default": "./src/exports/migration-utils.ts"
-    },
-    "./drizzle": {
-      "import": "./src/drizzle-proxy/index.ts",
-      "types": "./src/drizzle-proxy/index.ts",
-      "default": "./src/drizzle-proxy/index.ts"
-    },
-    "./drizzle/pg-core": {
-      "import": "./src/drizzle-proxy/pg-core.ts",
-      "types": "./src/drizzle-proxy/pg-core.ts",
-      "default": "./src/drizzle-proxy/pg-core.ts"
-    },
-    "./drizzle/node-postgres": {
-      "import": "./src/drizzle-proxy/node-postgres.ts",
-      "types": "./src/drizzle-proxy/node-postgres.ts",
-      "default": "./src/drizzle-proxy/node-postgres.ts"
-    },
-    "./drizzle/relations": {
-      "import": "./src/drizzle-proxy/relations.ts",
-      "types": "./src/drizzle-proxy/relations.ts",
-      "default": "./src/drizzle-proxy/relations.ts"
-    }
-  },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "files": [
-    "dist",
-    "mock.js"
-  ],
-  "scripts": {
-    "build": "node api.js && rimraf .dist && rimraf tsconfig.tsbuildinfo  && pnpm build:types && pnpm build:swc && pnpm build:esbuild && pnpm renamePredefinedMigrations",
-    "build:esbuild": "node api.js && echo skipping esbuild",
-    "build:swc": "node api.js && swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
-    "build:types": "node api.js && tsc --emitDeclarationOnly --outDir dist",
-    "clean": "rimraf -g {dist,*.tsbuildinfo}",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prepack": "pnpm clean && pnpm turbo build",
-    "prepublishOnly": "pnpm clean && pnpm turbo build --filter=./",
-    "renamePredefinedMigrations": "node --no-deprecation --import @swc-node/register/esm-register ./scripts/renamePredefinedMigrations.ts"
-  },
   "dependencies": {
     "@payloadcms/drizzle": "workspace:*",
     "@types/pg": "8.10.2",
@@ -85,6 +11,7 @@
     "to-snake-case": "1.0.0",
     "uuid": "10.0.0"
   },
+  "description": "The officially supported Postgres database adapter for Payload",
   "devDependencies": {
     "@hyrious/esbuild-plugin-commonjs": "0.2.6",
     "@payloadcms/eslint-config": "workspace:*",
@@ -92,48 +19,121 @@
     "esbuild": "0.25.5",
     "payload": "workspace:*"
   },
+  "exports": {
+    ".": {
+      "default": "./src/index.ts",
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./drizzle": {
+      "default": "./src/drizzle-proxy/index.ts",
+      "import": "./src/drizzle-proxy/index.ts",
+      "types": "./src/drizzle-proxy/index.ts"
+    },
+    "./drizzle/node-postgres": {
+      "default": "./src/drizzle-proxy/node-postgres.ts",
+      "import": "./src/drizzle-proxy/node-postgres.ts",
+      "types": "./src/drizzle-proxy/node-postgres.ts"
+    },
+    "./drizzle/pg-core": {
+      "default": "./src/drizzle-proxy/pg-core.ts",
+      "import": "./src/drizzle-proxy/pg-core.ts",
+      "types": "./src/drizzle-proxy/pg-core.ts"
+    },
+    "./drizzle/relations": {
+      "default": "./src/drizzle-proxy/relations.ts",
+      "import": "./src/drizzle-proxy/relations.ts",
+      "types": "./src/drizzle-proxy/relations.ts"
+    },
+    "./migration-utils": {
+      "default": "./src/exports/migration-utils.ts",
+      "import": "./src/exports/migration-utils.ts",
+      "types": "./src/exports/migration-utils.ts"
+    },
+    "./types": {
+      "default": "./src/exports/types-deprecated.ts",
+      "import": "./src/exports/types-deprecated.ts",
+      "types": "./src/exports/types-deprecated.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "mock.js"
+  ],
+  "homepage": "https://payloadcms.com",
+  "license": "MIT",
+  "main": "./src/index.ts",
+  "maintainers": [
+    {
+      "email": "info@payloadcms.com",
+      "name": "Payload",
+      "url": "https://payloadcms.com"
+    }
+  ],
+  "name": "@payloadcms/db-postgres",
   "peerDependencies": {
     "payload": "workspace:*"
   },
   "publishConfig": {
     "exports": {
       ".": {
+        "default": "./dist/index.js",
         "import": "./dist/index.js",
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "./types": {
-        "import": "./dist/exports/types-deprecated.js",
-        "types": "./dist/exports/types-deprecated.d.ts",
-        "default": "./dist/exports/types-deprecated.js"
-      },
-      "./migration-utils": {
-        "import": "./dist/exports/migration-utils.js",
-        "types": "./dist/exports/migration-utils.d.ts",
-        "default": "./dist/exports/migration-utils.js"
+        "types": "./dist/index.d.ts"
       },
       "./drizzle": {
+        "default": "./dist/drizzle-proxy/index.js",
         "import": "./dist/drizzle-proxy/index.js",
-        "types": "./dist/drizzle-proxy/index.d.ts",
-        "default": "./dist/drizzle-proxy/index.js"
-      },
-      "./drizzle/pg-core": {
-        "import": "./dist/drizzle-proxy/pg-core.js",
-        "types": "./dist/drizzle-proxy/pg-core.d.ts",
-        "default": "./dist/drizzle-proxy/pg-core.js"
+        "types": "./dist/drizzle-proxy/index.d.ts"
       },
       "./drizzle/node-postgres": {
+        "default": "./dist/drizzle-proxy/node-postgres.js",
         "import": "./dist/drizzle-proxy/node-postgres.js",
-        "types": "./dist/drizzle-proxy/node-postgres.d.ts",
-        "default": "./dist/drizzle-proxy/node-postgres.js"
+        "types": "./dist/drizzle-proxy/node-postgres.d.ts"
+      },
+      "./drizzle/pg-core": {
+        "default": "./dist/drizzle-proxy/pg-core.js",
+        "import": "./dist/drizzle-proxy/pg-core.js",
+        "types": "./dist/drizzle-proxy/pg-core.d.ts"
       },
       "./drizzle/relations": {
+        "default": "./dist/drizzle-proxy/relations.js",
         "import": "./dist/drizzle-proxy/relations.js",
-        "types": "./dist/drizzle-proxy/relations.d.ts",
-        "default": "./dist/drizzle-proxy/relations.js"
+        "types": "./dist/drizzle-proxy/relations.d.ts"
+      },
+      "./migration-utils": {
+        "default": "./dist/exports/migration-utils.js",
+        "import": "./dist/exports/migration-utils.js",
+        "types": "./dist/exports/migration-utils.d.ts"
+      },
+      "./types": {
+        "default": "./dist/exports/types-deprecated.js",
+        "import": "./dist/exports/types-deprecated.js",
+        "types": "./dist/exports/types-deprecated.d.ts"
       }
     },
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts"
-  }
+  },
+  "repository": {
+    "directory": "packages/db-postgres",
+    "type": "git",
+    "url": "https://github.com/payloadcms/payload.git"
+  },
+  "scripts": {
+    "build": "rimraf .dist && rimraf tsconfig.tsbuildinfo  && pnpm build:types && pnpm build:swc && pnpm build:esbuild && pnpm renamePredefinedMigrations",
+    "build:esbuild": "echo skipping esbuild",
+    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "clean": "rimraf -g {dist,*.tsbuildinfo}",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepack": "pnpm clean && pnpm turbo build",
+    "prepublishOnly": "pnpm clean && pnpm turbo build --filter=./",
+    "renamePredefinedMigrations": "node --no-deprecation --import @swc-node/register/esm-register ./scripts/renamePredefinedMigrations.ts"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "types": "./src/index.ts",
+  "version": "3.65.0"
 }

@@ -1,19 +1,4 @@
 {
-  "name": "payload-example-email",
-  "version": "1.0.0",
-  "description": "Payload Email integration example.",
-  "license": "MIT",
-  "type": "module",
-  "scripts": {
-    "_dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "build": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "node api.js && cross-env PAYLOAD_SEED=true PAYLOAD_DROP_DATABASE=true NODE_OPTIONS=--no-deprecation next dev",
-    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
-    "generate:schema": "payload-graphql generate:schema",
-    "generate:types": "payload generate:types",
-    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "node api.js && cross-env NODE_OPTIONS=--no-deprecation next start"
-  },
   "dependencies": {
     "@payloadcms/db-mongodb": "latest",
     "@payloadcms/email-nodemailer": "latest",
@@ -30,6 +15,7 @@
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
+  "description": "Payload Email integration example.",
   "devDependencies": {
     "@payloadcms/graphql": "latest",
     "@swc/core": "^1.6.13",
@@ -43,5 +29,19 @@
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0"
-  }
+  },
+  "license": "MIT",
+  "name": "payload-example-email",
+  "scripts": {
+    "_dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "cross-env PAYLOAD_SEED=true PAYLOAD_DROP_DATABASE=true NODE_OPTIONS=--no-deprecation next dev",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:schema": "payload-graphql generate:schema",
+    "generate:types": "payload generate:types",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+  },
+  "type": "module",
+  "version": "1.0.0"
 }

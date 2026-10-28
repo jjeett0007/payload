@@ -1,63 +1,63 @@
 {
-  "name": "@payloadcms/sdk",
-  "version": "3.65.0",
-  "description": "The official Payload REST API SDK",
-  "homepage": "https://payloadcms.com",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/payloadcms/payload.git",
-    "directory": "packages/sdk"
-  },
-  "license": "MIT",
   "author": "Payload <dev@payloadcms.com> (https://payloadcms.com)",
-  "maintainers": [
-    {
-      "name": "Payload",
-      "email": "info@payloadcms.com",
-      "url": "https://payloadcms.com"
-    }
-  ],
-  "type": "module",
+  "dependencies": {
+    "payload": "workspace:*",
+    "qs-esm": "7.0.2",
+    "ts-essentials": "10.0.3"
+  },
+  "description": "The official Payload REST API SDK",
+  "devDependencies": {
+    "@payloadcms/eslint-config": "workspace:*"
+  },
   "exports": {
     ".": {
+      "default": "./src/index.ts",
       "import": "./src/index.ts",
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
+      "types": "./src/index.ts"
     }
   },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
   "files": [
     "dist"
   ],
+  "homepage": "https://payloadcms.com",
+  "license": "MIT",
+  "main": "./src/index.ts",
+  "maintainers": [
+    {
+      "email": "info@payloadcms.com",
+      "name": "Payload",
+      "url": "https://payloadcms.com"
+    }
+  ],
+  "name": "@payloadcms/sdk",
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "default": "./dist/index.js",
+        "import": "./dist/index.js",
+        "types": "./dist/index.d.ts"
+      }
+    },
+    "main": "./dist/index.js",
+    "registry": "https://registry.npmjs.org/",
+    "types": "./dist/index.d.ts"
+  },
+  "repository": {
+    "directory": "packages/sdk",
+    "type": "git",
+    "url": "https://github.com/payloadcms/payload.git"
+  },
   "scripts": {
-    "build": "node api.js && pnpm copyfiles && pnpm build:types && pnpm build:swc",
-    "build:swc": "node api.js && swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
-    "build:types": "node api.js && tsc --emitDeclarationOnly --outDir dist",
+    "build": "pnpm copyfiles && pnpm build:types && pnpm build:swc",
+    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
     "clean": "rimraf {dist,*.tsbuildinfo}",
     "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,json}\" dist/",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepublishOnly": "pnpm clean && pnpm turbo build"
   },
-  "dependencies": {
-    "payload": "workspace:*",
-    "qs-esm": "7.0.2",
-    "ts-essentials": "10.0.3"
-  },
-  "devDependencies": {
-    "@payloadcms/eslint-config": "workspace:*"
-  },
-  "publishConfig": {
-    "exports": {
-      ".": {
-        "import": "./dist/index.js",
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    },
-    "main": "./dist/index.js",
-    "registry": "https://registry.npmjs.org/",
-    "types": "./dist/index.d.ts"
-  }
+  "type": "module",
+  "types": "./src/index.ts",
+  "version": "3.65.0"
 }

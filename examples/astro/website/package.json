@@ -1,17 +1,17 @@
 {
-  "name": "astro-website",
-  "version": "0.0.1",
-  "type": "module",
-  "scripts": {
-    "astro": "astro",
-    "build": "node api.js && astro build",
-    "dev": "node api.js && astro dev",
-    "preview": "astro preview"
-  },
   "dependencies": {
     "@astrojs/node": "^9.0.0",
     "astro": "^5.1.1",
     "payload": "3.11.0",
     "payload-app": "workspace:*"
-  }
+  },
+  "name": "astro-website",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "dev": "astro dev",
+    "preview": "astro preview"
+  },
+  "type": "module",
+  "version": "0.0.1"
 }

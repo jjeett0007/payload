@@ -1,7 +1,31 @@
 {
-  "name": "@payloadcms/plugin-redirects",
-  "version": "3.65.0",
+  "author": "Payload <dev@payloadcms.com> (https://payloadcms.com)",
+  "dependencies": {
+    "@payloadcms/translations": "workspace:*",
+    "payload": "workspace:*"
+  },
   "description": "Redirects plugin for Payload",
+  "devDependencies": {
+    "@payloadcms/eslint-config": "workspace:*"
+  },
+  "exports": {
+    ".": {
+      "default": "./src/index.ts",
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./types": {
+      "default": "./src/exports/types.ts",
+      "import": "./src/exports/types.ts",
+      "types": "./src/exports/types.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "types.js",
+    "types.d.ts"
+  ],
+  "homepage:": "https://payloadcms.com",
   "keywords": [
     "payload",
     "cms",
@@ -11,76 +35,52 @@
     "redirects",
     "nextjs"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/payloadcms/payload.git",
-    "directory": "packages/plugin-redirects"
-  },
   "license": "MIT",
-  "author": "Payload <dev@payloadcms.com> (https://payloadcms.com)",
+  "main": "./src/index.ts",
   "maintainers": [
     {
-      "name": "Payload",
       "email": "info@payloadcms.com",
+      "name": "Payload",
       "url": "https://payloadcms.com"
     }
   ],
-  "sideEffects": false,
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
-    },
-    "./types": {
-      "import": "./src/exports/types.ts",
-      "types": "./src/exports/types.ts",
-      "default": "./src/exports/types.ts"
-    }
-  },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "files": [
-    "dist",
-    "types.js",
-    "types.d.ts"
-  ],
-  "scripts": {
-    "build": "node api.js && pnpm copyfiles && pnpm build:types && pnpm build:swc",
-    "build:swc": "node api.js && swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
-    "build:types": "node api.js && tsc --emitDeclarationOnly --outDir dist",
-    "clean": "rimraf -g {dist,*.tsbuildinfo}",
-    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,json}\" dist/",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prepublishOnly": "pnpm clean && pnpm turbo build"
-  },
-  "dependencies": {
-    "@payloadcms/translations": "workspace:*",
-    "payload": "workspace:*"
-  },
-  "devDependencies": {
-    "@payloadcms/eslint-config": "workspace:*"
-  },
+  "name": "@payloadcms/plugin-redirects",
   "peerDependencies": {
     "payload": "workspace:*"
   },
   "publishConfig": {
     "exports": {
       ".": {
+        "default": "./dist/index.js",
         "import": "./dist/index.js",
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "types": "./dist/index.d.ts"
       },
       "./types": {
+        "default": "./dist/exports/types.js",
         "import": "./dist/exports/types.js",
-        "types": "./dist/exports/types.d.ts",
-        "default": "./dist/exports/types.js"
+        "types": "./dist/exports/types.d.ts"
       }
     },
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts"
   },
-  "homepage:": "https://payloadcms.com"
+  "repository": {
+    "directory": "packages/plugin-redirects",
+    "type": "git",
+    "url": "https://github.com/payloadcms/payload.git"
+  },
+  "scripts": {
+    "build": "pnpm copyfiles && pnpm build:types && pnpm build:swc",
+    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "clean": "rimraf -g {dist,*.tsbuildinfo}",
+    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,json}\" dist/",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepublishOnly": "pnpm clean && pnpm turbo build"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "types": "./src/index.ts",
+  "version": "3.65.0"
 }
