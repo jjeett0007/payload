@@ -35,14 +35,14 @@
   "license": "MIT",
   "name": "payload-app",
   "scripts": {
-    "build": "node init && next build",
-    "dev": "node init && next dev --turbo",
+    "build": "next build",
+    "dev": "next dev --turbo",
     "devsafe": "rm -rf .next && next dev",
     "generate:importmap": "payload generate:importmap",
     "generate:types": "payload generate:types",
     "lint": "next lint",
     "payload": "payload",
-    "start": "node init && next start"
+    "start": "next start"
   },
   "type": "module",
   "version": "1.0.0"

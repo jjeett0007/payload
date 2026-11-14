@@ -38,8 +38,8 @@
   "main": "dist/server.js",
   "name": "payload-example-live-preview",
   "scripts": {
-    "build": "node init && cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "node init && cross-env NODE_OPTIONS=--no-deprecation && pnpm seed && next dev",
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation && pnpm seed && next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:schema": "payload-graphql generate:schema",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
@@ -47,7 +47,7 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx src",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "seed": "npm run payload migrate:fresh",
-    "start": "node init && cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "type": "module",
   "version": "1.0.0"

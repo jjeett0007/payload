@@ -41,7 +41,7 @@
   "main": "src/index.ts",
   "name": "@tools/releaser",
   "scripts": {
-    "build": "node init && tsc",
+    "build": "tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "list-published": "tsx src/lib/getPackageRegistryVersions.ts",

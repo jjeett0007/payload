@@ -33,13 +33,13 @@
   "license": "MIT",
   "name": "tailwind-shadcn",
   "scripts": {
-    "build": "node init && cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "node init && cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "generate:types": "payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "node init && cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "type": "module",
   "version": "1.0.0"
