@@ -51,9 +51,9 @@
     "url": "https://github.com/payloadcms/payload.git"
   },
   "scripts": {
-    "build": "node init && pnpm build:types && pnpm build:swc",
-    "build:swc": "node init && swc ./src -d ./dist --config-file .swcrc-build --strip-leading-paths",
-    "build:types": "node init && tsc --emitDeclarationOnly --outDir dist",
+    "build": "pnpm build:types && pnpm build:swc",
+    "build:swc": "swc ./src -d ./dist --config-file .swcrc-build --strip-leading-paths",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
     "clean": "rimraf -g {dist,*.tsbuildinfo}",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

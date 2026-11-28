@@ -8,8 +8,8 @@
   "name": "astro-website",
   "scripts": {
     "astro": "astro",
-    "build": "node init && astro build",
-    "dev": "node init && astro dev",
+    "build": "astro build",
+    "dev": "astro dev",
     "preview": "astro preview"
   },
   "type": "module",

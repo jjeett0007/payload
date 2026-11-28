@@ -6,8 +6,8 @@
   "main": "index.js",
   "name": "remix-payload-monorepo",
   "scripts": {
-    "dev:payload": "node init && cd payload && pnpm dev",
-    "dev:website": "node init && cd website && pnpm dev",
+    "dev:payload": "cd payload && pnpm dev",
+    "dev:website": "cd website && pnpm dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "version": "1.0.0"

@@ -344,3 +344,4 @@ test/azurestoragedata/
 
 licenses.csv
 config.bat
+.env

@@ -9,7 +9,7 @@
   "license": "MIT",
   "name": "@tools/constants",
   "scripts": {
-    "build": "node init && tsc"
+    "build": "tsc"
   },
   "type": "module",
   "version": "0.0.1"
